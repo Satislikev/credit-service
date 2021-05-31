@@ -1,0 +1,19 @@
+server:
+  port : 8081
+spring:
+   autoconfigure:
+    exclude:
+     - org.springframework.cloud.aws.autoconfigure.messaging.MessagingAutoConfiguration
+     - org.springframework.cloud.aws.autoconfigure.context.ContextStackAutoConfiguration
+     - org.springframework.cloud.aws.autoconfigure.context.ContextRegionProviderAutoConfiguration
+   kafka:
+     producer:
+        bootstrap-servers: ec2-13-48-126-232.eu-north-1.compute.amazonaws.com:9093 
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+     consumer:
+        bootstrap-servers: ec2-13-48-126-232.eu-north-1.compute.amazonaws.com:9093 
+        group-id: group_id
+        auto-offset-reset: earliest
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
